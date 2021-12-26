@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./1_iterableAndFunction/1-1_iterable.js"></script>
+    <script src="./1_iterableAndFunction/1-2_generator.js"></script>
+    <script src="./1_iterableAndFunction/1-3_map.js"></script>
+    <script src="./1_iterableAndFunction/1-4_filter.js"></script>
+    <script src="./1_iterableAndFunction/1-5_reduce.js"></script>
+    <script src="./1_iterableAndFunction/1-6_응용.js"></script>
+    <script src="./2_코드를값으로표현력높이기/2-1_go.AndPipe.js"></script>
+    <script src="./2_코드를값으로표현력높이기/2-2_goAndCurry.js"></script>
+    <script src="./2_코드를값으로표현력높이기/2-3_pipe.js"></script>
+  </head>
+  <body>
+    <div id="cart"></div>
+    <script>
+      console.clear();
+      const products2 = [
+        { name: '반팔티', price: 15000, quantity: 1 },
+        { name: '긴팔티', price: 25000, quantity: 2 },
+        { name: '케이스', price: 35000, quantity: 3 },
+        { name: '후드티', price: 1000, quantity: 4 },
+        { name: '바지', price: 5000, quantity: 5 },
+      ];
+
+      // const total_quantity = (products) =>
+      //   go(
+      //     products,
+      //     map((p) => p.quantity),
+      //     reduce(add)
+      //   );
+      const total_quantity = pipe(
+        map((p) => p.quantity),
+        reduce(add)
+      );
+      log(total_quantity(products2));
+      const total_prices = pipe(
+        map((p) => p.quantity * p.price),
+        reduce(add)
+      );
+      log(total_prices(products2));
+    </script>
+  </body>
+</html>
